@@ -1,0 +1,10 @@
+ //***  Jquery 'click' for Modal Popup Form  ***//
+ 
+ 
+    $('#createNewItem').click(function () {
+        $('#saveBtn').val("create-item");
+        $('#item_id').val('');
+        $('#itemForm').trigger("reset");
+        $('#modelHeading').html("Create New Item");
+        $('#ajaxModel').modal('show');
+    });
