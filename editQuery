@@ -1,0 +1,14 @@
+//*** JQuery 'On' for Edit Function in form ***//
+
+    $('body').on('click', '.editItem', function () {
+      var item_id = $(this).data('id');
+
+      $.get("{{ route('items.index') }}" +'/' + item_id +'/edit', function (data) {
+          $('#modelHeading').html("Edit Item");
+          $('#saveBtn').val("edit-item");
+          $('#ajaxModel').modal('show');
+          $('#item_id').val(data.id);
+          $('#category').val(data.name);
+          $('#name').val(data.name);
+      });
+   });
