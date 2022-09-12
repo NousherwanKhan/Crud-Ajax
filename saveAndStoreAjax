@@ -1,0 +1,26 @@
+   //*** JQuery 'click' for save button in form ***//
+
+    $('#saveBtn').click(function (e) {
+        e.preventDefault();
+        $(this).html('Save');
+
+
+        //*** JQuery 'ajax' to store data from form ***//
+        $.ajax({
+          data: $('#itemForm').serialize(),
+          url: "{{ route('items.store') }}",
+          type: "POST",
+          dataType: 'json',
+          success: function (data) {
+     
+              $('#itemForm').trigger("reset");
+              $('#ajaxModel').modal('hide');
+              table.draw();
+         
+          },
+          error: function (data) {
+              console.log('Error:', data);
+              $('#saveBtn').html('Save Changes');
+          }
+      });
+    });
