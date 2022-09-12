@@ -1,0 +1,18 @@
+  //*** JQuery 'On' for delete Function in form ***//
+
+    $('body').on('click', '.deleteItem', function () {
+     
+        var item_id = $(this).data("id");
+        confirm("Are You sure want to delete !");
+      
+        $.ajax({
+            type: "DELETE",
+            url: "{{ route('items.store') }}"+'/'+item_id,
+            success: function (data) {
+                table.draw();
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    });
